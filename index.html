@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jessica Kirby | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="custom.css">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -23,14 +24,23 @@
     </style>
   </head>
   <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
-    <header class="flex justify-between items-center p-4 max-w-4xl mx-auto">
-      <h1 class="text-xl font-bold">Jessica Kirby</h1>
-      <button id="toggle-theme" class="p-2 border rounded">Toggle Theme</button>
+    <header class="sticky top-0 z-50 bg-white dark:bg-gray-950 shadow-md">
+      <nav class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-pink-600 dark:text-pink-400">Jessica Kirby</h1>
+        <ul class="flex space-x-6">
+          <li><a href="#about" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">About</a></li>
+          <li><a href="#resume-contact" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">Resume</a></li>
+          <li><a href="#projects" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">Projects</a></li>
+        </ul>
+        <button id="toggle-theme" class="p-2 border rounded text-sm text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-pink-50 dark:hover:bg-gray-800 transition">
+          Toggle Theme
+        </button>
+      </nav>
     </header>
 
-    <main class="p-4 max-w-4xl mx-auto space-y-12">
+    <main class="p-4 mx-auto space-y-12">
       <section>
-        <h2 class="text-2xl font-semibold mb-2">About Me</h2>
+        <h2 class="text-3xl font-bold text-kirby mb-6 text-center">About Me</h2>
         <p>
           Passionate front-end developer and software engineer with a strong background in web development and game design. I bring creativity and technical skills together to craft interactive, user-friendly digital experiences.
         </p>
@@ -38,7 +48,7 @@
 
       <section class="space-y-4">
         <div>
-          <h2 class="text-2xl font-semibold mb-2">Resume</h2>
+          <h2 class="text-3xl font-bold text-kirby mb-6 text-center">Resume</h2>
           <a href="JessicaKirbyResume.pdf" download class="text-blue-500 hover:underline">Download PDF</a>
         </div>
         <div>
@@ -50,55 +60,70 @@
       </section>
 
       <!-- Projects -->
-      <section id="projects" class="space-y-6">
-        <h2 class="text-2xl font-semibold mb-4">Projects</h2>
-
-        <div class="fade-in">
-          <h3 class="text-xl font-bold">Minecraft D&D Mod</h3>
-          <p>Java | Gradle | PaperMC</p>
-          <p>
-            Custom Minecraft mod integrating Dungeons & Dragons mechanics including health, armor class, initiative, and character sheets.
-          </p>
-          <a href="https://github.com/FirebrickRed/MinecraftDndMod" target="_blank" class="text-blue-500 hover:underline">View on GitHub</a>
-        </div>
-
-        <div class="fade-in">
-          <h3 class="text-xl font-bold">Dine at Nite</h3>
-          <p>PhaserJS | Godot</p>
-          <p>
-            A diner management game inspired by Diner Dash. Click-and-drag gameplay for seating, ordering, and serving customers.
-          </p>
-          <iframe src="https://jsarcadegames.com" class="w-full h-64 border mt-2" title="Dine at Nite"></iframe>
-        </div>
-
-        <div class="fade-in">
-          <h3 class="text-xl font-bold">SubOptimalGaming</h3>
-          <p>Svelte | Netlify CMS</p>
-          <p>
-            A team site for a League of Legends esports group with real-time updates and CMS-based content management.
-          </p>
-          <a href="https://suboptimalgaming.com/" target="_blank" class="text-blue-500 hover:underline">Visit Site</a>
-        </div>
-
-        <div class="fade-in">
-          <h3 class="text-xl font-bold">Terraria House Creator</h3>
-          <p>HTML | CSS | JavaScript</p>
-          <p>A tool to help design and layout Terraria housing more easily for players.</p>
-          <a href="https://github.com/FirebrickRed/TerrariaHouseCreator" target="_blank" class="text-blue-500 hover:underline">View on GitHub</a>
-        </div>
-
-        <div class="fade-in">
-          <h3 class="text-xl font-bold">Skylander Collection</h3>
-          <p>JavaScript | Web App</p>
-          <p>A collection manager for Skylanders figures with filtering and tracking features.</p>
-          <a href="https://github.com/FirebrickRed/SkylanderCollection" target="_blank" class="text-blue-500 hover:underline">View on GitHub</a>
-        </div>
-
-        <div class="fade-in">
-          <h3 class="text-xl font-bold">Old Wizard Outfitter</h3>
-          <p>Vue | CSS</p>
-          <p>An early project to dynamically customize wizard characters with different gear and outfits.</p>
-          <span class="text-gray-400 italic">Private repository</span>
+      <section id="projects" class="space-y-6 px-4">
+        <h2 class="text-3xl font-bold text-kirby mb-6 text-center">Projects</h2>
+        <div class="flex flex-col space-y-8">
+      
+          <!-- Card: Minecraft D&D Mod -->
+          <div class="fade-in bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
+            <h3 class="text-2xl font-bold mb-2">Minecraft D&D Mod</h3>
+            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">Java | Gradle | PaperMC</p>
+            <p class="mb-4">
+              Custom Minecraft mod integrating Dungeons & Dragons mechanics including health, armor class, initiative, and character sheets.
+            </p>
+            <a href="https://github.com/FirebrickRed" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
+          </div>
+      
+          <!-- Card: Dine at Nite -->
+          <div class="fade-in bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
+            <h3 class="text-2xl font-bold mb-2">Dine at Nite</h3>
+            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">PhaserJS | Godot</p>
+            <p class="mb-4">
+              A diner management game inspired by Diner Dash. Click-and-drag gameplay for seating, ordering, and serving customers.
+            </p>
+            <div class="w-full overflow-auto">
+              <iframe src="https://jsarcadegames.com/#gamePage/dineatnite" width="100%" height="480" class="w-full border rounded mb-2" title="Dine at Nite"></iframe>
+            </div>
+            <a href="https://jsarcadegames.com/#gamePage/dineatnite" target="_blank" class="text-kirby hover:text-firebrick">Play Fullscreen</a>
+          </div>
+      
+          <!-- Card: SubOptimalGaming -->
+          <div class="fade-in bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
+            <h3 class="text-2xl font-bold mb-2">SubOptimalGaming</h3>
+            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">Svelte | Netlify CMS</p>
+            <p class="mb-4">
+              A team site for a League of Legends esports group with real-time updates and CMS-based content management.
+            </p>
+            <div class="w-full overflow-auto">
+              <iframe src="https://suboptimalgaming.com" width="100%" height="480" class="w-full border rounded mb-2" title="SubOptimalGaming"></iframe>
+            </div>
+            <a href="https://suboptimalgaming.com" target="_blank" class="text-kirby hover:text-firebrick">Visit Full Site</a>
+          </div>
+      
+          <!-- Card: Terraria House Creator -->
+          <div class="fade-in bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
+            <h3 class="text-2xl font-bold mb-2">Terraria House Creator</h3>
+            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">HTML | CSS | JavaScript</p>
+            <p class="mb-4">A tool to help design and layout Terraria housing more easily for players.</p>
+            <a href="https://github.com/FirebrickRed/TerrariaHouseCreator" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
+          </div>
+      
+          <!-- Card: Skylander Collection -->
+          <div class="fade-in bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
+            <h3 class="text-2xl font-bold mb-2">Skylander Collection</h3>
+            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">JavaScript | Web App</p>
+            <p class="mb-4">A collection manager for Skylanders figures with filtering and tracking features.</p>
+            <a href="https://github.com/FirebrickRed/SkylanderCollection" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
+          </div>
+      
+          <!-- Card: Old Wizard Outfitter -->
+          <div class="fade-in bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
+            <h3 class="text-2xl font-bold mb-2">Old Wizard Outfitter</h3>
+            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">Vue | CSS</p>
+            <p class="mb-4">An early project to dynamically customize wizard characters with different gear and outfits.</p>
+            <span class="text-gray-400 italic">Private repository</span>
+          </div>
+      
         </div>
       </section>
     </main>

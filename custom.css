@@ -1,0 +1,29 @@
+
+:root {
+  --firebrick: #B22222;
+  --kirby: #FF69B4;
+}
+
+.text-firebrick {
+  color: var(--firebrick);
+}
+
+.bg-firebrick {
+  background-color: var(--firebrick);
+}
+
+.text-kirby {
+  color: var(--kirby);
+}
+
+.bg-kirby {
+  background-color: var(--kirby);
+}
+
+.hover\:text-firebrick:hover {
+  color: var(--firebrick);
+}
+
+.hover\:text-kirby:hover {
+  color: var(--kirby);
+}
