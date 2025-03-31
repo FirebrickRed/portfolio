@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jessica Kirby | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      };
+    </script>
+    <style>
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <header class="flex justify-between items-center p-4 max-w-4xl mx-auto">
+      <h1 class="text-xl font-bold">Jessica Kirby</h1>
+      <button id="toggle-theme" class="p-2 border rounded">Toggle Theme</button>
+    </header>
+
+    <main class="p-4 max-w-4xl mx-auto space-y-12">
+      <section>
+        <h2 class="text-2xl font-semibold mb-2">About Me</h2>
+        <p>
+          Passionate front-end developer and software engineer with a strong background in web development and game design. I bring creativity and technical skills together to craft interactive, user-friendly digital experiences.
+        </p>
+      </section>
+
+      <section class="space-y-4">
+        <div>
+          <h2 class="text-2xl font-semibold mb-2">Resume</h2>
+          <a href="JessicaKirbyResume.pdf" download class="text-blue-500 hover:underline">Download PDF</a>
+        </div>
+        <div>
+          <h2 class="text-2xl font-semibold mb-2">Contact</h2>
+          <p>Email: <a href="mailto:jessica@borda.us" class="text-blue-500 hover:underline">jessica@borda.us</a></p>
+          <p>GitHub: <a href="https://github.com/FirebrickRed" target="_blank" class="text-blue-500 hover:underline">FirebrickRed</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/jessica-borda/" target="_blank" class="text-blue-500 hover:underline">Jessica Borda</a></p>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="space-y-6">
+        <h2 class="text-2xl font-semibold mb-4">Projects</h2>
+
+        <div class="fade-in">
+          <h3 class="text-xl font-bold">Minecraft D&D Mod</h3>
+          <p>Java | Gradle | PaperMC</p>
+          <p>
+            Custom Minecraft mod integrating Dungeons & Dragons mechanics including health, armor class, initiative, and character sheets.
+          </p>
+          <a href="https://github.com/FirebrickRed/MinecraftDndMod" target="_blank" class="text-blue-500 hover:underline">View on GitHub</a>
+        </div>
+
+        <div class="fade-in">
+          <h3 class="text-xl font-bold">Dine at Nite</h3>
+          <p>PhaserJS | Godot</p>
+          <p>
+            A diner management game inspired by Diner Dash. Click-and-drag gameplay for seating, ordering, and serving customers.
+          </p>
+          <iframe src="https://jsarcadegames.com" class="w-full h-64 border mt-2" title="Dine at Nite"></iframe>
+        </div>
+
+        <div class="fade-in">
+          <h3 class="text-xl font-bold">SubOptimalGaming</h3>
+          <p>Svelte | Netlify CMS</p>
+          <p>
+            A team site for a League of Legends esports group with real-time updates and CMS-based content management.
+          </p>
+          <a href="https://suboptimalgaming.com/" target="_blank" class="text-blue-500 hover:underline">Visit Site</a>
+        </div>
+
+        <div class="fade-in">
+          <h3 class="text-xl font-bold">Terraria House Creator</h3>
+          <p>HTML | CSS | JavaScript</p>
+          <p>A tool to help design and layout Terraria housing more easily for players.</p>
+          <a href="https://github.com/FirebrickRed/TerrariaHouseCreator" target="_blank" class="text-blue-500 hover:underline">View on GitHub</a>
+        </div>
+
+        <div class="fade-in">
+          <h3 class="text-xl font-bold">Skylander Collection</h3>
+          <p>JavaScript | Web App</p>
+          <p>A collection manager for Skylanders figures with filtering and tracking features.</p>
+          <a href="https://github.com/FirebrickRed/SkylanderCollection" target="_blank" class="text-blue-500 hover:underline">View on GitHub</a>
+        </div>
+
+        <div class="fade-in">
+          <h3 class="text-xl font-bold">Old Wizard Outfitter</h3>
+          <p>Vue | CSS</p>
+          <p>An early project to dynamically customize wizard characters with different gear and outfits.</p>
+          <span class="text-gray-400 italic">Private repository</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center py-4 text-sm text-gray-500 dark:text-gray-400">
+      © 2025 Jessica Kirby
+    </footer>
+
+    <script>
+      document.getElementById('toggle-theme').addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+      });
+
+      const faders = document.querySelectorAll('.fade-in');
+      const appearOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        });
+      }, appearOptions);
+
+      faders.forEach(fader => appearOnScroll.observe(fader));
+    </script>
+  </body>
+</html>
