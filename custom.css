@@ -27,3 +27,82 @@
 .hover\:text-kirby:hover {
   color: var(--kirby);
 }
+
+@keyframes kirby-flicker {
+  100% {
+    box-shadow:
+      0 0 1px #fff,
+      0 0 2.75px #fff,
+      0 0 4.75px #fff,
+      0 0 10px #FF69B4,
+      0 0 20px #FF69B4,
+      0 0 22.5px #FF69B4,
+      0 0 25px #FF69B4,
+      0 0 37.5px #FF69B4;
+  }
+
+  0% {
+    box-shadow:
+      0 0 0.5px #fff,
+      0 0 1px #fff,
+      0 0 1.5px #fff,
+      0 0 2.5px #FF69B4,
+      0 0 11.25px #FF69B4,
+      0 0 13.75px #FF69B4,
+      0 0 17.5px #FF69B4,
+      0 0 20px #FF69B4;
+  }
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  animation: kirby-flicker 1.5s infinite alternate;
+  /* transition: transform 0.4s ease; */
+}
+
+.icon {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 140px;
+  background-color: var(--kirby);
+  color: white;
+  text-align: center;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%; /* Position above */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
+}
+
+.tooltip.active .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
