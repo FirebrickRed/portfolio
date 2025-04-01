@@ -9,5 +9,9 @@ module.exports = {
       },
     },
     darkMode: 'class',
+    safelist: [
+      'prose-headings:text-kirby',
+      'prose-a:text-firebrick'
+    ],
   };
   

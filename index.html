@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jessica Kirby | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMwviN6RM4HjTH+6A/6KfFwqflFZlZ7E2Xuz7tRZGhrUO6rO+kWwvMN7jD1UQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=typography,aspect-ratio"></script>
     <link rel="stylesheet" href="custom.css">
     <script>
       tailwind.config = {
@@ -29,16 +30,16 @@
     </header>
 
     <main class="p-y-4 mx-auto space-y-12">
-      <section class="p-4">
-        <h2 class="text-3xl font-bold text-kirby mb-6 text-center">About Me</h2>
+      <section id="about" class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick max-w-4xl mx-auto px-4 py-8">
+        <h2 class="text-center">About Me</h2>
         <p>
           Passionate front-end developer and software engineer with a strong background in web development and game design. I bring creativity and technical skills together to craft interactive, user-friendly digital experiences.
         </p>
       </section>
 
-      <section id="resume-contact" class="px-8 py-16 bg-pink-50 dark:bg-gray-950">
-        <h2 class="text-3xl font-bold text-kirby mb-10 text-center">Contact</h2>
-        <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+      <section id="resume-contact" class="px-8 py-16 bg-pink-50 dark:bg-gray-950 prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick prose-a:no-underline max-w-6xl mx-auto">
+        <h2 class="text-center">Contact</h2>
+        <div class="grid md:grid-cols-2 gap-6">
       
           <!-- Email -->
           <div onclick="copyToClipboard('jessica@borda.us', this)" class="tooltip cursor-pointer contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
@@ -61,14 +62,14 @@
       
           <!-- LinkedIn -->
           <a href="https://www.linkedin.com/in/jessica-borda/" target="_blank" class="contact-card block bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center">
+            <h3 class="text-lg font-semibold mb-1 flex items-center">
               <i class="fab fa-linkedin mr-2 text-firebrick"></i>LinkedIn
             </h3>
             <p class="text-gray-700 dark:text-gray-300">Jessica Kirby</p>
           </a>
       
           <!-- Resume -->
-          <div class="contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
+          <div class="contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl prose-a:underline">
             <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center">
               <i class="fas fa-file-alt mr-2 text-firebrick"></i>Resume
             </h3>
@@ -78,7 +79,7 @@
               onclick="toggleEmbedWithArrow('embed-resume', this)"
             >
               <span>Preview Resume</span>
-              <span class="arrow transition-transform">&#9660;</span>
+              <span class="arrow transition-transform">&#9658;</span>
             </button>
             <div id="embed-resume" class="hidden w-full h-[800px] border rounded overflow-hidden mt-4">
               <iframe src="JessicaKirbyResume.pdf" width="100%" height="100%" class="w-full h-full" title="Jessica Kirby Resume"></iframe>
@@ -88,25 +89,25 @@
       </section>
 
       <!-- Projects -->
-      <section id="projects" class="space-y-6 px-4">
-        <h2 class="text-3xl font-bold text-kirby mb-6 text-center">Projects</h2>
+      <section id="projects" class="px-4 py-16 prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-h3:my-0 max-w-6xl mx-auto">
+        <h2 class="text-center">Projects</h2>
         <div class="flex flex-col space-y-8">
       
           <!-- Card: Minecraft D&D Mod -->
-          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-2xl font-bold mb-2">Minecraft D&D Mod</h3>
-            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">Java | Gradle | PaperMC</p>
-            <p class="mb-4">
+          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
+            <h3>Minecraft D&D Mod</h3>
+            <p>Java | Gradle | PaperMC</p>
+            <p>
               Custom Minecraft mod integrating Dungeons & Dragons mechanics including health, armor class, initiative, and character sheets.
             </p>
             <a href="https://github.com/FirebrickRed" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
           </div>
       
           <!-- Card: Dine at Nite -->
-          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-2xl font-bold mb-2">Dine at Nite</h3>
-            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">PhaserJS | Godot</p>
-            <p class="mb-4">
+          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
+            <h3>Dine at Nite</h3>
+            <p>PhaserJS | Godot</p>
+            <p>
               A diner management game inspired by Diner Dash. Click-and-drag gameplay for seating, ordering, and serving customers.
             </p>
             <button
@@ -114,19 +115,19 @@
               onclick="toggleEmbedWithArrow('embed-dineatnite', this)"
             >
               <span>Preview</span>
-              <span class="arrow transition-transform">&#9660;</span> <!-- ▼ -->
+              <span class="arrow transition-transform">&#9658;</span>
             </button>
-            <div id="embed-dineatnite" class="hidden w-full overflow-auto">
-              <iframe src="https://jsarcadegames.com/#gamePage/dineatnite" width="100%" height="480" class="w-full border rounded mb-2" title="Dine at Nite"></iframe>
+            <div id="embed-dineatnite" class="embed-container w-full border rounded overflow-hidden transition-all duration-700 ease-in-out">
+              <iframe src="https://jsarcadegames.com/#gamePage/dineatnite" class="w-full h-[720px]" allowfullscreen loading="lazy" title="Dine at Nite"></iframe>
             </div>
             <a href="https://jsarcadegames.com/#gamePage/dineatnite" target="_blank" class="text-kirby hover:text-firebrick">Play Fullscreen</a>
           </div>
       
           <!-- Card: SubOptimalGaming -->
-          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-2xl font-bold mb-2">SubOptimalGaming</h3>
-            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">Svelte | Netlify CMS</p>
-            <p class="mb-4">
+          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
+            <h3>SubOptimalGaming</h3>
+            <p>Svelte | Netlify CMS</p>
+            <p>
               A team site for a League of Legends esports group with real-time updates and CMS-based content management.
             </p>
             <button
@@ -134,35 +135,35 @@
               onclick="toggleEmbedWithArrow('embed-suboptimalgaming', this)"
             >
               <span>Preview</span>
-              <span class="arrow transition-transform">&#9660;</span> <!-- ▼ -->
+              <span class="arrow transition-transform">&#9658;</span>
             </button>
-            <div id="embed-suboptimalgaming" class="hidden w-full overflow-auto">
-              <iframe src="https://suboptimalgaming.com" width="100%" height="480" class="w-full border rounded mb-2" title="SubOptimalGaming"></iframe>
+            <div id="embed-suboptimalgaming" class="embed-container w-full border rounded overflow-hidden transition-all duration-700 ease-in-out">
+              <iframe src="https://suboptimalgaming.com" class="w-full h-[720px]" allowfullscreen loading="lazy" title="SubOptimalGaming"></iframe>
             </div>
             <a href="https://suboptimalgaming.com" target="_blank" class="text-kirby hover:text-firebrick">Visit Full Site</a>            
           </div>
       
           <!-- Card: Terraria House Creator -->
-          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-2xl font-bold mb-2">Terraria House Creator</h3>
-            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">HTML | CSS | JavaScript</p>
-            <p class="mb-4">A tool to help design and layout Terraria housing more easily for players.</p>
+          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
+            <h3>Terraria House Creator</h3>
+            <p>HTML | CSS | JavaScript</p>
+            <p>A tool to help design and layout Terraria housing more easily for players.</p>
             <a href="https://github.com/FirebrickRed/TerrariaHouseCreator" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
           </div>
       
           <!-- Card: Skylander Collection -->
-          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-2xl font-bold mb-2">Skylander Collection</h3>
-            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">JavaScript | Web App</p>
-            <p class="mb-4">A collection manager for Skylanders figures with filtering and tracking features.</p>
+          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
+            <h3>Skylander Collection</h3>
+            <p>JavaScript | Web App</p>
+            <p>A collection manager for Skylanders figures with filtering and tracking features.</p>
             <a href="https://github.com/FirebrickRed/SkylanderCollection" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
           </div>
       
           <!-- Card: Old Wizard Outfitter -->
-          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-2xl font-bold mb-2">Old Wizard Outfitter</h3>
-            <p class="mb-2 text-sm text-gray-600 dark:text-gray-300">Vue | CSS</p>
-            <p class="mb-4">An early project to dynamically customize wizard characters with different gear and outfits.</p>
+          <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
+            <h3>Old Wizard Outfitter</h3>
+            <p>Vue | CSS</p>
+            <p>An early project to dynamically customize wizard characters with different gear and outfits.</p>
             <span class="text-gray-400 italic">Private repository</span>
           </div>
       
@@ -207,9 +208,47 @@
       function toggleEmbedWithArrow(id, btn) {
         const embed = document.getElementById(id);
         const arrow = btn.querySelector('.arrow');
-        embed.classList.toggle('hidden');
-        arrow.innerHTML = embed.classList.contains('hidden') ? '▼' : '▲';
+
+        if (embed.classList.contains('open')) {
+          // Collapse
+          embed.style.height = embed.scrollHeight + 'px'; // Set to current to trigger transition
+          requestAnimationFrame(() => {
+            embed.style.height = '0px';
+            embed.classList.remove('open');
+          });
+          arrow.innerHTML = '▶';
+        } else {
+          // Expand
+          embed.classList.add('open');
+          embed.style.height = embed.scrollHeight + 'px';
+
+          // Clear inline height after transition to allow future resizes
+          embed.addEventListener('transitionend', function handler() {
+            embed.style.height = 'auto';
+            embed.removeEventListener('transitionend', handler);
+          });
+
+          arrow.innerHTML = '▲';
+        }
       }
+
+      tailwind.config = {
+        darkMode: 'class',
+        safelist: [
+          'prose-headings:text-kirby',
+          'prose-a:text-firebrick',
+          'prose-p:text-gray-700',
+          'dark:prose-p:text-gray-300'
+        ],
+        theme: {
+          extend: {
+            colors: {
+              firebrick: '#B22222',
+              kirby: '#FF69B4',
+            }
+          }
+        }
+      };
     </script>
   </body>
 </html>
