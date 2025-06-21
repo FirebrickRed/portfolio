@@ -3,8 +3,8 @@ module.exports = {
     theme: {
       extend: {
         colors: {
-          firebrick: '#B22222',
-          kirby: '#FF69B4',
+          firebrick: '#efb6d4',
+          kirby: '#d74894',
         },
       },
     },

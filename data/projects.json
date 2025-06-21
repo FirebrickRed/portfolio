@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Wizard Outfitter",
+    "tech": ["Java", "Gradle", "PaperMC"],
+    "description": "Custom Minecraft mod integrating Dungeons & Dragons mechanics including health, armor class, initiative, and character sheets.",
+    "url": "https://github.com/FirebrickRed/MinecraftDnD"
+  },
+  {
+    "title": "Dine at Nite",
+    "tech": ["PhaserJS", "Godot"],
+    "description": "A diner management game inspired by Diner Dash.",
+    "url": "https://jsarcadegames.com/#gamePage/dineatnite"
+  }
+]

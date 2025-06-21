@@ -89,11 +89,17 @@
       </section>
 
       <!-- Projects -->
-      <section id="projects" class="px-4 py-16 prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-h3:my-0 max-w-6xl mx-auto">
+      <!-- <section id="projects" class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick max-w-4xl mx-auto px-4 py-8"> -->
+      <section class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick max-w-4xl mx-auto px-4 py-8 w-full">
+        <h2 class="text-center">Projects</h2>
+        <div id="projects-templates"></div>
+        <div id="timeline-container" class="my-6 flex justify-center"></div>
+        <div id="step-content" class="text-center text-xl font-bold mt-4"></div>
+      </section>
+      <!-- <section id="projects" class="px-4 py-16 prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-h3:my-0 max-w-6xl mx-auto">
         <h2 class="text-center">Projects</h2>
         <div class="flex flex-col space-y-8">
       
-          <!-- Card: Minecraft D&D Mod -->
           <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
             <h3>Minecraft D&D Mod</h3>
             <p>Java | Gradle | PaperMC</p>
@@ -103,7 +109,6 @@
             <a href="https://github.com/FirebrickRed" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
           </div>
       
-          <!-- Card: Dine at Nite -->
           <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
             <h3>Dine at Nite</h3>
             <p>PhaserJS | Godot</p>
@@ -123,7 +128,6 @@
             <a href="https://jsarcadegames.com/#gamePage/dineatnite" target="_blank" class="text-kirby hover:text-firebrick">Play Fullscreen</a>
           </div>
       
-          <!-- Card: SubOptimalGaming -->
           <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
             <h3>SubOptimalGaming</h3>
             <p>Svelte | Netlify CMS</p>
@@ -143,7 +147,6 @@
             <a href="https://suboptimalgaming.com" target="_blank" class="text-kirby hover:text-firebrick">Visit Full Site</a>           
           </div>
       
-          <!-- Card: Terraria House Creator -->
           <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
             <h3>Terraria House Creator</h3>
             <p>HTML | CSS | JavaScript</p>
@@ -162,7 +165,6 @@
             <a href="https://github.com/FirebrickRed/TerrariaHouseCreator" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
           </div>
       
-          <!-- Card: Skylander Collection -->
           <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
             <h3>Skylander Collection</h3>
             <p>JavaScript | Web App</p>
@@ -181,7 +183,6 @@
             <a href="https://github.com/FirebrickRed/SkylanderCollection" target="_blank" class="text-kirby hover:text-firebrick">View on GitHub</a>
           </div>
       
-          <!-- Card: Old Wizard Outfitter -->
           <div class="fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
             <h3>Old Wizard Outfitter</h3>
             <p>Vue | CSS</p>
@@ -190,12 +191,15 @@
           </div>
       
         </div>
-      </section>
+      </section> -->
     </main>
 
     <footer class="text-center py-4 text-sm text-gray-500 dark:text-gray-400">
       © 2025 Jessica Kirby
     </footer>
+
+    
+    <script type="module" src="./js/main.js"></script>
 
     <script>
       document.getElementById('toggle-theme').addEventListener('click', () => {
@@ -265,8 +269,8 @@
         theme: {
           extend: {
             colors: {
-              firebrick: '#B22222',
-              kirby: '#FF69B4',
+              firebrick: '#efb6d4',
+              kirby: '#d74894',
             }
           }
         }
