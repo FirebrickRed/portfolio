@@ -1,13 +1,17 @@
 
 export function createInteractiveTimeline(steps, onSelect) {
+  const stepGap = 200;
   const radius = 10;
-  const height = 60;
+  const totalWidth = stepGap * (steps.length - 1) + radius * 2;
+  const height = 80;
   const svgNS = "http://www.w3.org/2000/svg";
 
   const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("viewBox", `0 0 ${steps.length * 100} ${height}`);
+  svg.setAttribute("viewBox", `-30 0 ${totalWidth} ${height}`);
   svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-  svg.classList.add("w-full", "h-24");
+  svg.setAttribute("width", totalWidth);
+  svg.setAttribute("height", 80);
+  // svg.classList.add("w-auto", "h-auto");
 
   // Line
   const line = document.createElementNS(svgNS, "line");
@@ -92,29 +96,35 @@ export function createInteractiveTimeline(steps, onSelect) {
       dot.classList.remove("pulse");
     });
 
-    nodeRefs.push(dot);
     svg.appendChild(dot);
 
     const label = document.createElementNS(svgNS, "text");
     label.setAttribute("x", cx);
-    label.setAttribute("y", cy + radius + 16);
+    label.setAttribute("y", cy + radius + 25);
     label.setAttribute("text-anchor", "middle");
-    label.setAttribute("font-size", "12");
+    label.setAttribute("font-size", "16");
     label.setAttribute("fill", "#fff");
+    label.setAttribute("class", "timeline-label");
     label.textContent = step;
     svg.appendChild(label);
+
+    nodeRefs.push({ dot, label });
   });
 
   // Style selected node
   function highlightNode(index) {
-    nodeRefs.forEach((node, i) => {
+    nodeRefs.forEach(({dot, label}, i) => {
       setTimeout(() => {
-        node.setAttribute("fill", i === index ? "transparent" : "white");
-        node.setAttribute("stroke", i === index ? "transparent" : "#d74894");
+        dot.setAttribute("fill", i === index ? "transparent" : "white");
+        dot.setAttribute("stroke", i === index ? "transparent" : "#d74894");
       }, 50);
       // node.setAttribute("fill", i === index ? "#efb6d4" : "white");
       // node.setAttribute("stroke", i === index ? "#efb6d4" : "#d74894");
-      node.setAttribute("r", i === index ? radius + 2 : radius);
+      dot.setAttribute("r", i === index ? radius + 2 : radius);
+
+      label.setAttribute("font-size", i === index ? "18" : "16");
+      label.setAttribute("fill", i === index ? "#efb6d4" : "white");
+      label.setAttribute("font-weight", i === index ? "bold" : "normal");
     });
   }
 

@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/FirebrickRed/portfolio/issues"
   },
-  "homepage": "https://github.com/FirebrickRed/portfolio#readme"
+  "homepage": "https://github.com/FirebrickRed/portfolio#readme",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.16"
+  }
 }
