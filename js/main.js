@@ -2,16 +2,16 @@ import { ProjectCard } from './components/ProjectCard.js';
 // import { createInteractiveTimeline } from './components/InteractiveTimeline.js';
 
 async function loadProjects() {
-    console.log('in load projects');
-    const res = await fetch('../data/projects.json');
-    const projects = await res.json();
-    console.log('projects: ', projects);
-    const container = document.getElementById('projects-templates');
+  console.log('in load projects');
+  const res = await fetch('../data/projects.json');
+  const projects = await res.json();
+  console.log('projects: ', projects);
+  const container = document.getElementById('projects-templates');
 
-    projects.forEach(project => {
-        const card = ProjectCard(project);
-        container.appendChild(card);
-    });
+  projects.forEach(project => {
+    const card = ProjectCard(project);
+    container.appendChild(card);
+  });
 }
 
 // console.log('in main.js')

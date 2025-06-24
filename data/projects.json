@@ -4,22 +4,23 @@
     "tech": ["GitHub", "Figma"],
     "steps": [
       {
-        "Label": "Overview"
+        "label": "Overview",
+        "description": "Wizard Outfitter is a gear planning and loadout comparison tool for Wizard101. The goal is to make it easy for players to find, filter, and compare gear options based on their wizard’s school and level, with support for saving multiple wizards and toggling between them. The app aims to streamline the process with a fast, intuitive interface that removes the friction of stat-checking across multiple sources. By combining modern design with player-focused features, Wizard Outfitter enhances the experience for new and veteran players alike.<br /><br />The plan is to build this using React, Tailwind, and local storage for wizard profiles, then to expand into account logins, community builds, and deeper integrations like spell cards and deck setups. The project is actively incorporating user feedback and focusing on clarity, responsiveness, and usability."
       }, {
-        "Label": "Wireframe",
-        "Status": "In Progress",
-        "Link": "",
-        "UserFeedback": ""
+        "label": "Wireframe",
+        "status": "In Progress",
+        "link": "",
+        "userfeedback": ""
       }, {
-        "Label": "Designs",
-        "Status": "In Progress",
-        "Link": "",
-        "UserFeedback": ""
+        "label": "Designs",
+        "status": "In Progress",
+        "link": "",
+        "userfeedback": ""
       }, {
-        "Label": "Delivered",
-        "Status": "",
-        "Link": "",
-        "UserFeedback": ""
+        "label": "Delivered",
+        "status": "",
+        "link": "",
+        "userfeedback": ""
       }
     ],
     "description": "Custom Minecraft mod integrating Dungeons & Dragons mechanics including health, armor class, initiative, and character sheets.",
@@ -29,9 +30,9 @@
     "tech": ["GitHub", "Svelte", "Netlify"],
     "steps": [
       {
-        "Label": "Overview"
+        "label": "Overview"
       }, {
-        "Label": "Delivered"
+        "label": "Delivered"
       }
     ]
   }

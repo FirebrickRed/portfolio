@@ -1,4 +1,5 @@
 import { createInteractiveTimeline } from "./InteractiveTimeline.js";
+import { fetchFormResponses } from "../utils/fetchFeedback.js";
 
 export function ProjectCard(project) {
   const card = document.createElement('div');
@@ -16,6 +17,52 @@ export function ProjectCard(project) {
 
   titleRow.appendChild(title);
 
+  
+  const gearLookupChart = document.createElement('canvas');
+
+  fetchFormResponses().then(feedbacks => {
+    console.log('feedback: ', feedbacks);
+
+    const gearLookupData = feedbacks.reduce((acc, current) => {
+      const answer = current["How Often do you look up gear while playing Wizard101"];
+      acc[answer] = (acc[answer] || 0) + 1;
+      return acc;
+    }, {});
+
+    console.log('gearlookupdata: ', gearLookupData);
+
+    new Chart(gearLookupChart, {
+      type: 'bar',
+      data: {
+        labels: ['1 - Never', '2', '3', '4', '5 - Always'],
+        datasets: [{
+          label: 'erm?',
+          data: [gearLookupData[1] || 0, gearLookupData[2] || 0, gearLookupData[3] || 0, gearLookupData[4] || 0, gearLookupData[5] || 0],
+          borderWidth: 1,
+          backgroundColor: '#efb6d4'
+        }]
+      }
+    })
+
+    
+
+    // information to display:
+    // How Often do you look up gear while playing wizard101
+    // Would you create an account to save, share, and/or organize your loadouts
+    // How useful would a tool like this be to you
+
+    // const container = document.createElement("div");
+    // container.className = "space-y-4 mt-6";
+
+    // feedbacks.forEach(fb => {
+    //   const p = document.createElement("p");
+    //   p.className = "text-sm italic text-gray-300 bg-gray-700 p-2 rounded";
+    //   p.textContent = fb["What did you like?"] || "No comment.";
+    //   container.appendChild(p);
+    // });
+
+    // document.body.appendChild(container); // Or insert in your card
+  });
 
   const techIcons = {
     "Java": "https://cdn.simpleicons.org/java/white",
@@ -34,13 +81,31 @@ export function ProjectCard(project) {
   project.tech.forEach(tech => {
     const iconUrl = techIcons[tech];
     if (iconUrl) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'relative group px-2';
+
       const img = document.createElement("img");
       img.src = iconUrl;
       img.alt = tech;
       img.title = tech;
       img.className = "h-8 hover:scale-110 transition-transform duration-200 pl-6"
-      // img.className = "w-6 h-6 hover:scale-110 transition-transform duration-200";
-      techListContainer.appendChild(img);
+      
+      const tooltip = document.createElement('div');
+      tooltip.className = 'tech-tooltip';
+      tooltip.textContent = tech;
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(tooltip);
+
+      wrapper.addEventListener('mouseenter', () => {
+        tooltip.classList.add('show');
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('show');
+      });
+
+      techListContainer.appendChild(wrapper);
     } else {
       const fallback = document.createElement("span");
       fallback.textContent = tech;
@@ -59,19 +124,33 @@ export function ProjectCard(project) {
   const stepDetail = document.createElement('div');
 
   const updateStepDetail = (i, step) => {
-    const { Label, Status, Link, UserFeedback } = step;
-    stepDetail.innerHTML = `
-      <div class="space-y-2">
-        <h4 class="text-lg font-semibold text-pink-600 dark:text-pink-300">${Label || ''}</h4>
-        ${Status ? `<p class="text-xs text-pink-800 dark:text-pink-100 bg-pink-100 dark:bg-pink-900 inline-block px-2 py-0.5 rounded">${Status}</p>` : ''}
-        ${UserFeedback ? `<p class="italic text-gray-500 dark:text-gray-400">“${UserFeedback}”</p>` : ''}
-        ${Link ? `<a href="${Link}" target="_blank" class="inline-block mt-2 text-pink-600 dark:text-pink-300 hover:underline">View Work</a>` : ''}
-      </div>
-    `;
+    const { label, status, link, userfeedback, description } = step;
+    stepDetail.innerHTML = '';
+    
+    const labelElement = document.createElement('h4');
+    labelElement.className = 'text-firebrick text-2xl';
+    labelElement.textContent = label;
+
+    const descriptionElement = document.createElement('p');
+    descriptionElement.className = 'text-xl';
+    descriptionElement.innerHTML = description ? description : '';
+
+    stepDetail.appendChild(labelElement);
+    stepDetail.appendChild(descriptionElement);
+    stepDetail.appendChild(gearLookupChart);
+
+    // stepDetail.innerHTML = `
+    //   <div class="space-y-2">
+    //     <h4 class="text-lg font-semibold text-pink-600 dark:text-pink-300">${label || ''}</h4>
+    //     ${status ? `<p class="text-xs text-pink-800 dark:text-pink-100 bg-pink-100 dark:bg-pink-900 inline-block px-2 py-0.5 rounded">${status}</p>` : ''}
+    //     ${userfeedback ? `<p class="italic text-gray-500 dark:text-gray-400">“${userfeedback}”</p>` : ''}
+    //     ${link ? `<a href="${link}" target="_blank" class="inline-block mt-2 text-pink-600 dark:text-pink-300 hover:underline">View Work</a>` : ''}
+    //   </div>
+    // `;
   };
 
   // Create timeline from steps
-  const stepLabels = project.steps.map(s => s.Label || '');
+  const stepLabels = project.steps.map(s => s.label || '');
   const timeline = createInteractiveTimeline(stepLabels, (index, label) => {
     updateStepDetail(index, project.steps[index]);
   });
