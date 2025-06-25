@@ -1,5 +1,5 @@
 import { createInteractiveTimeline } from "./InteractiveTimeline.js";
-import { fetchFormResponses } from "../utils/fetchFeedback.js";
+// import { fetchFormResponses } from "../utils/fetchFeedback.js";
 
 export function ProjectCard(project) {
   const card = document.createElement('div');
@@ -20,49 +20,49 @@ export function ProjectCard(project) {
   
   const gearLookupChart = document.createElement('canvas');
 
-  fetchFormResponses().then(feedbacks => {
-    console.log('feedback: ', feedbacks);
+  // fetchFormResponses().then(feedbacks => {
+  //   console.log('feedback: ', feedbacks);
 
-    const gearLookupData = feedbacks.reduce((acc, current) => {
-      const answer = current["How Often do you look up gear while playing Wizard101"];
-      acc[answer] = (acc[answer] || 0) + 1;
-      return acc;
-    }, {});
+  //   const gearLookupData = feedbacks.reduce((acc, current) => {
+  //     const answer = current["How Often do you look up gear while playing Wizard101"];
+  //     acc[answer] = (acc[answer] || 0) + 1;
+  //     return acc;
+  //   }, {});
 
-    console.log('gearlookupdata: ', gearLookupData);
+  //   console.log('gearlookupdata: ', gearLookupData);
 
-    new Chart(gearLookupChart, {
-      type: 'bar',
-      data: {
-        labels: ['1 - Never', '2', '3', '4', '5 - Always'],
-        datasets: [{
-          label: 'erm?',
-          data: [gearLookupData[1] || 0, gearLookupData[2] || 0, gearLookupData[3] || 0, gearLookupData[4] || 0, gearLookupData[5] || 0],
-          borderWidth: 1,
-          backgroundColor: '#efb6d4'
-        }]
-      }
-    })
+  //   new Chart(gearLookupChart, {
+  //     type: 'bar',
+  //     data: {
+  //       labels: ['1 - Never', '2 - Rarely', '3 - Sometimes', '4 - Frequently', '5 - Very Frequently'],
+  //       datasets: [{
+  //         label: 'erm?',
+  //         data: [gearLookupData[1] || 0, gearLookupData[2] || 0, gearLookupData[3] || 0, gearLookupData[4] || 0, gearLookupData[5] || 0],
+  //         borderWidth: 1,
+  //         backgroundColor: '#efb6d4'
+  //       }]
+  //     }
+  //   })
 
     
 
-    // information to display:
-    // How Often do you look up gear while playing wizard101
-    // Would you create an account to save, share, and/or organize your loadouts
-    // How useful would a tool like this be to you
+  //   // information to display:
+  //   // How Often do you look up gear while playing wizard101
+  //   // Would you create an account to save, share, and/or organize your loadouts
+  //   // How useful would a tool like this be to you
 
-    // const container = document.createElement("div");
-    // container.className = "space-y-4 mt-6";
+  //   // const container = document.createElement("div");
+  //   // container.className = "space-y-4 mt-6";
 
-    // feedbacks.forEach(fb => {
-    //   const p = document.createElement("p");
-    //   p.className = "text-sm italic text-gray-300 bg-gray-700 p-2 rounded";
-    //   p.textContent = fb["What did you like?"] || "No comment.";
-    //   container.appendChild(p);
-    // });
+  //   // feedbacks.forEach(fb => {
+  //   //   const p = document.createElement("p");
+  //   //   p.className = "text-sm italic text-gray-300 bg-gray-700 p-2 rounded";
+  //   //   p.textContent = fb["What did you like?"] || "No comment.";
+  //   //   container.appendChild(p);
+  //   // });
 
-    // document.body.appendChild(container); // Or insert in your card
-  });
+  //   // document.body.appendChild(container); // Or insert in your card
+  // });
 
   const techIcons = {
     "Java": "https://cdn.simpleicons.org/java/white",
@@ -71,7 +71,9 @@ export function ProjectCard(project) {
     "GitHub": "https://cdn.simpleicons.org/github/white",
     "Netlify": "https://cdn.simpleicons.org/netlify/white",
     "Figma": "https://cdn.simpleicons.org/figma/white",
-    "Svelte": "https://cdn.simpleicons.org/svelte/white"
+    "Svelte": "https://cdn.simpleicons.org/svelte/white",
+    "Godot": "https://cdn.simpleicons.org/Godotengine/white",
+    "JavaScript": "https://cdn.simpleicons.org/javascript/white",
   };
 
   const techListContainer = document.createElement('ul');
@@ -124,20 +126,39 @@ export function ProjectCard(project) {
   const stepDetail = document.createElement('div');
 
   const updateStepDetail = (i, step) => {
-    const { label, status, link, userfeedback, description } = step;
+    const { label, status, link, userfeedback, description, livesite, githublink } = step;
     stepDetail.innerHTML = '';
     
     const labelElement = document.createElement('h4');
     labelElement.className = 'text-firebrick text-2xl';
     labelElement.textContent = label;
 
+    stepDetail.appendChild(labelElement);
+
     const descriptionElement = document.createElement('p');
     descriptionElement.className = 'text-xl';
     descriptionElement.innerHTML = description ? description : '';
 
-    stepDetail.appendChild(labelElement);
+
+    // Delivered
+    if(githublink) {
+      const githublinkElement = document.createElement('a');
+      githublinkElement.href = githublink;
+      githublinkElement.target = '_blank';
+      githublinkElement.textContent = 'View on GitHub';
+      githublinkElement.className = 'text-kirby hover:text-firebrick underline transition-colors';
+      stepDetail.appendChild(githublinkElement);
+    }
+
+    if(livesite) {
+      const siteEmbedElement = document.createElement('iframe');
+      siteEmbedElement.src = livesite;
+      siteEmbedElement.className = 'w-full h-[800px] rounded-md border-2 border-firebrick';
+      stepDetail.appendChild(siteEmbedElement);
+    }
+
     stepDetail.appendChild(descriptionElement);
-    stepDetail.appendChild(gearLookupChart);
+    // stepDetail.appendChild(gearLookupChart);
 
     // stepDetail.innerHTML = `
     //   <div class="space-y-2">
