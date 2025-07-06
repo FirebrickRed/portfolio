@@ -185,7 +185,145 @@ body {
 }
 
 .tech-tooltip.show {
+  visibility: visible;
   opacity: 1;
-  transform: translateY(-20px);
+  transform: translateY(0);
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.step-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  pointer-events: none; /* Prevent interaction when hidden */
+  max-height: 0;
+  overflow: hidden;
+}
+
+.step-content.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* Allow interaction when active */
+  max-height: 100vh; /* A large value to accommodate any content */
+}
+
+
+
+.step-detail {
+  transition: max-height 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.delivered-actions {
+  display: flex;
+  justify-content: center; /* Center the button group */
+  gap: 1.5rem; /* Increased spacing */
+  align-items: center;
+  margin: 0.5rem 0; /* Add vertical margin to prevent clipping on hover */
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #6c757d; /* Default background for buttons like 'View Live Site' */
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Consistent, strong text outline */
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+  background-color: #868e96; /* Default hover color */
+}
+
+.action-button.preview-button {
+  background-color: #d74894;
+  color: white;
+}
+
+.action-button.preview-button:hover {
+  background-color: #efb6d4;
+}
+
+.action-button.github-button {
+  background-color: #333;
+  color: white;
+}
+
+.action-button.github-button:hover {
+  background-color: #555;
+}
+
+.action-button:focus {
+  outline: none;
+  border-color: #efb6d4;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 1000;
+}
+
+.modal-overlay.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  height: 80%;
+  max-width: 1200px;
+}
+
+#modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+#modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 

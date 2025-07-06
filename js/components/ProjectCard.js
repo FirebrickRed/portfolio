@@ -1,12 +1,14 @@
 import { createInteractiveTimeline } from "./InteractiveTimeline.js";
+import { renderStep } from "./StepRenderer.js";
 // import { fetchFormResponses } from "../utils/fetchFeedback.js";
+
+// const stepRenderers = {
+//   overview: renderOverviewStep,
+// }
 
 export function ProjectCard(project) {
   const card = document.createElement('div');
   card.className = 'contact-card dark:bg-gray-800 m-6 p-4 rounded-lg shadow-lg';
-  // card.className = 'contact-card block bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl';
-  // card.className = 'fade-in contact-card bg-pink-50 dark:bg-gray-800 shadow-lg rounded-lg p-6 transition';
-
 
   const titleRow = document.createElement('div');
   titleRow.className = 'flex items-center flex-wrap justify-between items-end';
@@ -17,7 +19,7 @@ export function ProjectCard(project) {
 
   titleRow.appendChild(title);
 
-  
+  //#region chart stuff
   const gearLookupChart = document.createElement('canvas');
 
   // fetchFormResponses().then(feedbacks => {
@@ -64,8 +66,10 @@ export function ProjectCard(project) {
   //   // document.body.appendChild(container); // Or insert in your card
   // });
 
+  //#endregion
+
   const techIcons = {
-    "Java": "https://cdn.simpleicons.org/java/white",
+    "Java": "https://img.icons8.com/?size=&id=13679&format=png&color=000000",
     "Gradle": "https://cdn.simpleicons.org/gradle/white",
     "PaperMC": "https://assets.papermc.io/brand/papermc_combination_mark_dark.min.svg",
     "GitHub": "https://cdn.simpleicons.org/github/white",
@@ -74,6 +78,8 @@ export function ProjectCard(project) {
     "Svelte": "https://cdn.simpleicons.org/svelte/white",
     "Godot": "https://cdn.simpleicons.org/Godotengine/white",
     "JavaScript": "https://cdn.simpleicons.org/javascript/white",
+    "PhaserJs": "https://cdn.phaser.io/images/logo/phaser-planet-web.png",
+    "CreateJs": "https://symbols.getvecta.com/stencil_25/13_createjs.d7de4f0c5d.svg"
   };
 
   const techListContainer = document.createElement('ul');
@@ -124,60 +130,61 @@ export function ProjectCard(project) {
   timelineContainer.className = 'w-3/4';
   
   const stepDetail = document.createElement('div');
+  stepDetail.className = "relative overflow-hidden step-detail";
 
-  const updateStepDetail = (i, step) => {
-    const { label, status, link, userfeedback, description, livesite, githublink } = step;
-    stepDetail.innerHTML = '';
-    
-    const labelElement = document.createElement('h4');
-    labelElement.className = 'text-firebrick text-2xl';
-    labelElement.textContent = label;
-
-    stepDetail.appendChild(labelElement);
-
-    const descriptionElement = document.createElement('p');
-    descriptionElement.className = 'text-xl';
-    descriptionElement.innerHTML = description ? description : '';
-
-
-    // Delivered
-    if(githublink) {
-      const githublinkElement = document.createElement('a');
-      githublinkElement.href = githublink;
-      githublinkElement.target = '_blank';
-      githublinkElement.textContent = 'View on GitHub';
-      githublinkElement.className = 'text-kirby hover:text-firebrick underline transition-colors';
-      stepDetail.appendChild(githublinkElement);
-    }
-
-    if(livesite) {
-      const siteEmbedElement = document.createElement('iframe');
-      siteEmbedElement.src = livesite;
-      siteEmbedElement.className = 'w-full h-[800px] rounded-md border-2 border-firebrick';
-      stepDetail.appendChild(siteEmbedElement);
-    }
-
-    stepDetail.appendChild(descriptionElement);
-    // stepDetail.appendChild(gearLookupChart);
-
-    // stepDetail.innerHTML = `
-    //   <div class="space-y-2">
-    //     <h4 class="text-lg font-semibold text-pink-600 dark:text-pink-300">${label || ''}</h4>
-    //     ${status ? `<p class="text-xs text-pink-800 dark:text-pink-100 bg-pink-100 dark:bg-pink-900 inline-block px-2 py-0.5 rounded">${status}</p>` : ''}
-    //     ${userfeedback ? `<p class="italic text-gray-500 dark:text-gray-400">“${userfeedback}”</p>` : ''}
-    //     ${link ? `<a href="${link}" target="_blank" class="inline-block mt-2 text-pink-600 dark:text-pink-300 hover:underline">View Work</a>` : ''}
-    //   </div>
-    // `;
-  };
-
-  // Create timeline from steps
+  const stepHeading = document.createElement('h3');
+  stepHeading.className = 'text-3xl font-bold text-kirby my-8 text-center tracking-wide';
+  stepDetail.appendChild(stepHeading);
   const stepLabels = project.steps.map(s => s.label || '');
-  const timeline = createInteractiveTimeline(stepLabels, (index, label) => {
-    updateStepDetail(index, project.steps[index]);
+
+  const allStepElements = project.steps.map(step => {
+    const el = document.createElement('div');
+    el.className = "step-content";
+    const wrapper = document.createElement('div');
+    wrapper.className = 'transition-all duration-500';
+
+    el.appendChild(renderStep(step));
+
+    stepDetail.appendChild(el);
+    return el;
   });
 
-  // Default to first step
-  updateStepDetail(0, project.steps[0]);
+  allStepElements[0].classList.add("is-active");
+  stepHeading.textContent = project.steps[0].label;
+  // Set initial max-height after content is active and rendered
+  setTimeout(() => {
+    const headingStyle = window.getComputedStyle(stepHeading);
+    const headingMargin = parseInt(headingStyle.marginTop) + parseInt(headingStyle.marginBottom);
+    const headingHeight = stepHeading.offsetHeight + headingMargin;
+
+    const contentHeight = allStepElements[0].scrollHeight;
+    
+    stepDetail.style.maxHeight = `${headingHeight + contentHeight}px`;
+  }, 100);
+
+  const timeline = createInteractiveTimeline(stepLabels, index => {
+    const currentActiveStep = allStepElements.find(el => el.classList.contains("is-active"));
+    
+    if (currentActiveStep) {
+      currentActiveStep.classList.remove("is-active");
+    }
+
+    const newActiveStep = allStepElements[index];
+    newActiveStep.classList.add("is-active");
+    stepHeading.textContent = project.steps[index].label;
+
+    setTimeout(() => {
+      const headingStyle = window.getComputedStyle(stepHeading);
+      const headingMargin = parseInt(headingStyle.marginTop) + parseInt(headingStyle.marginBottom);
+      const headingHeight = stepHeading.offsetHeight + headingMargin;
+
+      const contentHeight = newActiveStep.scrollHeight;
+      
+      stepDetail.style.maxHeight = `${headingHeight + contentHeight}px`;
+    }, 50);
+  });
+
+  // Create timeline from steps
 
   timelineContainer.appendChild(timeline);
 

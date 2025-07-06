@@ -22,7 +22,7 @@
       }, {
         "label": "Wireframe",
         "description": "Working on this section, hoping to include the user stories and figma wireframes and designs.",
-        "link": "",
+        "figmaEmbed": "https://embed.figma.com/design/HXMQS0Au4lOrGvApiUvA2Y/Wizard-Outfitter-WireFrame?node-id=0-1&embed-host=share",
         "userfeedback": ""
       }
     ],
@@ -50,13 +50,13 @@
         "description": "A custom Minecraft mod that brings Dungeons & Dragons mechanics into the game. Features include character sheets, armor class calculations, initiative tracking, and unique health displays. Designed to enhance immersive D&D gameplay directly within Minecraft.<br /><br />Pictures coming soon."
       },
       {
-        "label": "GitHub",
-        "githublink": "https://github.com/FirebrickRed"
+        "label": "Delivered",
+        "githublink": "https://github.com/FirebrickRed/MinecraftDnD"
       }
     ]
   }, {
     "title": "Dine at Nite",
-    "tech": ["PhaserJS", "Godot", "GitHub", "AWS Amplify", "Route 53"],
+    "tech": ["PhaserJs", "Godot", "GitHub", "AWS Amplify", "Route 53"],
     "steps": [
       {
         "label": "Overview",
@@ -70,7 +70,7 @@
     ]
   }, {
     "title": "Terraria House Creator",
-    "tech": ["CreateJS", "JavaScript", "AWS Amplify", "GitHub"],
+    "tech": ["CreateJs", "JavaScript", "AWS Amplify", "GitHub"],
     "steps": [
       {
         "label": "Overview",
