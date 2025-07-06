@@ -17,12 +17,12 @@
   </head>
   <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
     <header class="sticky top-0 z-50 bg-white dark:bg-gray-950 shadow-md">
-      <nav class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        <h1 class="text-xl font-bold text-pink-600 dark:text-pink-400">Jessica Kirby</h1>
+      <nav class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center" aria-label="Main navigation">
+        <span class="text-xl font-bold text-pink-600 dark:text-pink-400">Jessica Kirby</span>
         <ul class="flex space-x-6">
           <li><a href="#about" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">About</a></li>
-          <li><a href="#resume-contact" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">Contact</a></li>
           <li><a href="#projects" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">Projects</a></li>
+          <li><a href="#resume-contact" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">Contact</a></li>
         </ul>
         <button id="toggle-theme" class="p-2 border rounded text-sm text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-pink-50 dark:hover:bg-gray-800 transition">
           Toggle Theme
@@ -31,19 +31,32 @@
     </header>
 
     <main class="p-y-4 mx-auto space-y-12">
-      <section id="about" class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick max-w-4xl mx-auto px-4 py-8">
+      <h1 class="text-center text-5xl font-bold text-kirby mt-12 mb-8">Jessica Kirby</h1>
+      <section id="about" class="px-8 py-16 bg-pink-50 dark:bg-gray-950 prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick max-w-4xl mx-auto px-4 py-8 shadow-lg rounded-lg">
         <h2 class="text-center">About Me</h2>
         <p>
-          Passionate front-end developer and software engineer with a strong background in web development and game design. I bring creativity and technical skills together to craft interactive, user-friendly digital experiences. 
+          Hello There! I'm Jessica Kirby, a passionate front-end developer and software engineer. I specialize in transforming complex ideas into intuitive, high-performance web experiences, combining technical proficiency with creative problem-solving. My goal is to deliver engaging and accessible user interfaces that bring innovative concepts to life through elegant and efficient code.
         </p>
       </section>
 
-      <section id="resume-contact" class="px-8 py-16 bg-pink-50 dark:bg-gray-950 prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick prose-a:no-underline max-w-6xl mx-auto">
+      
+
+      <!-- Projects -->
+      <!-- <section id="projects" class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick max-w-4xl mx-auto px-4 py-8"> -->
+      <!-- <section class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick mx-auto px-4 py-8 w-full"> -->
+      <section id="projects">
+        <h2 class="text-center font-bold text-kirby">Projects</h2>
+        <div id="projects-templates"></div>
+        <div id="timeline-container" class="my-6 flex justify-center"></div>
+        <div id="step-content" class="text-center text-xl font-bold mt-4"></div>
+      </section>
+
+      <section id="resume-contact" class="px-8 py-16 bg-pink-50 dark:bg-gray-950 prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick prose-a:no-underline max-w-6xl mx-auto shadow-lg rounded-lg">
         <h2 class="text-center">Contact</h2>
         <div class="grid md:grid-cols-2 gap-6">
       
           
-          <div onclick="copyToClipboard('jessica@borda.us', this)" class="tooltip cursor-pointer contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
+          <button id="email-contact-button" class="tooltip cursor-pointer contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
             <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center">
               <i class="fas fa-envelope mr-2 text-firebrick"></i>Email
             </h3>
@@ -51,7 +64,7 @@
               jessica@borda.us
               <span class="tooltip-text">Copied!</span>
             </p>
-          </div>
+          </button>
       
           
           <a href="https://github.com/FirebrickRed" target="_blank" class="contact-card block bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
@@ -87,16 +100,6 @@
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- Projects -->
-      <!-- <section id="projects" class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick max-w-4xl mx-auto px-4 py-8"> -->
-      <!-- <section class="prose lg:prose-xl dark:prose-invert prose-headings:text-kirby prose-a:text-firebrick mx-auto px-4 py-8 w-full"> -->
-      <section id="projects">
-        <h2 class="text-center font-bold text-kirby">Projects</h2>
-        <div id="projects-templates"></div>
-        <div id="timeline-container" class="my-6 flex justify-center"></div>
-        <div id="step-content" class="text-center text-xl font-bold mt-4"></div>
       </section>
     </main>
 
@@ -136,6 +139,10 @@
           }, 1500);
         });
       }
+
+      document.getElementById('email-contact-button').addEventListener('click', (event) => {
+        copyToClipboard('jessica@borda.us', event.currentTarget);
+      });
 
       function toggleEmbedWithArrow(id, btn) {
         const embed = document.getElementById(id);

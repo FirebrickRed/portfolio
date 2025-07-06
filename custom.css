@@ -254,7 +254,7 @@ body {
 }
 
 .action-button.preview-button:hover {
-  background-color: #efb6d4;
+  background-color: #c03a80;
 }
 
 .action-button.github-button {
@@ -295,20 +295,20 @@ body {
 .modal-content {
   position: relative;
   background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  height: 80%;
-  max-width: 1200px;
+  border-radius: 20px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
 }
 
 #modal-close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--kirby);
   color: white;
-  border: none;
+  border: 2px solid black;
   font-size: 30px;
   font-weight: bold;
   width: 40px;
@@ -319,11 +319,28 @@ body {
   align-items: center;
   justify-content: center;
   line-height: 1;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  text-shadow: -1px -1px 0 #c03a80, 1px -1px 0 #c03a80, -1px 1px 0 #c03a80, 1px 1px 0 #c03a80;
+}
+
+#modal-close-btn:hover {
+  background-color: #c03a80; /* Darker pink on hover */
+  transform: scale(1.1);
 }
 
 #modal-iframe {
   width: 100%;
   height: 100%;
-  border: none;
+  border: 7px solid var(--kirby);
+  flex-grow: 1;
+  border-radius: 20px;
 }
 
+.step-content ul {
+  list-style-type: disc; /* Ensures bullet points */
+  margin-left: 1.5em; /* Adds indentation for the bullets */
+}
+
+.step-content li {
+  margin-bottom: 0.5em; /* Adds some space between list items */
+}
