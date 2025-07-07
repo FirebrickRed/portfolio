@@ -18,11 +18,11 @@
   <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
     <header class="sticky top-0 z-50 bg-white dark:bg-gray-950 shadow-md">
       <nav class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center" aria-label="Main navigation">
-        <span class="text-xl font-bold text-pink-600 dark:text-pink-400">Jessica Kirby</span>
+        <a href="#" class="text-xl font-bold text-pink-600 dark:text-pink-400 hover:text-white dark:hover:text-white nav-link">Jessica Kirby</a>
         <ul class="flex space-x-6">
-          <li><a href="#about" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">About</a></li>
-          <li><a href="#projects" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">Projects</a></li>
-          <li><a href="#resume-contact" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition">Contact</a></li>
+          <li><a href="#about" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition nav-link">About</a></li>
+          <li><a href="#projects" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition nav-link">Projects</a></li>
+          <li><a href="#resume-contact" class="text-gray-700 dark:text-gray-200 hover:text-kirby dark:hover:text-pink-400 transition nav-link">Contact</a></li>
         </ul>
         <button id="toggle-theme" class="p-2 border rounded text-sm text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-pink-50 dark:hover:bg-gray-800 transition">
           Toggle Theme
@@ -56,8 +56,8 @@
         <div class="grid md:grid-cols-2 gap-6">
       
           
-          <button id="email-contact-button" class="tooltip cursor-pointer contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition">
-            <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center">
+          <button id="email-contact-button" class="tooltip cursor-pointer contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition text-center">
+            <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center justify-center">
               <i class="fas fa-envelope mr-2 text-firebrick"></i>Email
             </h3>
             <p class="text-gray-700 dark:text-gray-300">
@@ -67,16 +67,16 @@
           </button>
       
           
-          <a href="https://github.com/FirebrickRed" target="_blank" class="contact-card block bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center">
+          <a href="https://github.com/FirebrickRed" target="_blank" class="contact-card block bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl text-center">
+            <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center justify-center">
               <i class="fab fa-github mr-2 text-firebrick"></i>GitHub
             </h3>
             <p class="text-gray-700 dark:text-gray-300">FirebrickRed</p>
           </a>
       
           
-          <a href="https://www.linkedin.com/in/jessica-borda/" target="_blank" class="contact-card block bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl">
-            <h3 class="text-lg font-semibold mb-1 flex items-center">
+          <a href="https://www.linkedin.com/in/jessica-borda/" target="_blank" class="contact-card block bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl text-center">
+            <h3 class="text-lg font-semibold mb-1 flex items-center justify-center">
               <i class="fab fa-linkedin mr-2 text-firebrick"></i>LinkedIn
             </h3>
             <p class="text-gray-700 dark:text-gray-300">Jessica Kirby</p>
@@ -84,19 +84,12 @@
       
           
           <div class="contact-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition hover:shadow-xl prose-a:underline">
-            <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center">
+            <h3 class="text-lg font-semibold text-kirby mb-1 flex items-center justify-center">
               <i class="fas fa-file-alt mr-2 text-firebrick"></i>Resume
             </h3>
-            <a href="JessicaKirbyResume.pdf" download class="text-firebrick hover:text-kirby underline block mb-2">Download Resume PDF</a>
-            <button
-              class="text-kirby hover:text-firebrick font-semibold flex items-center gap-1"
-              onclick="toggleEmbedWithArrow('embed-resume', this)"
-            >
-              <span>Preview Resume</span>
-              <span class="arrow transition-transform">&#9658;</span>
-            </button>
-            <div id="embed-resume" class="embed-container w-full border rounded overflow-hidden transition-all duration-700 ease-in-out">
-              <iframe src="JessicaKirbyResume.pdf" class="w-full h-[720px]" title="Jessica Kirby Resume"></iframe>
+            <div class="delivered-actions">
+              <button id="preview-resume-button" class="action-button preview-button">Preview Resume</button>
+              <a href="JessicaKirbyResume.pdf" download class="action-button github-button">Download PDF</a>
             </div>
           </div>
         </div>

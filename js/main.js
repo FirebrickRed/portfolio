@@ -1,5 +1,5 @@
 import { ProjectCard } from './components/ProjectCard.js';
-// import { createInteractiveTimeline } from './components/InteractiveTimeline.js';
+import { showModal } from './components/Modal.js';
 
 async function loadProjects() {
   console.log('in load projects');
@@ -14,17 +14,9 @@ async function loadProjects() {
   });
 }
 
-// console.log('in main.js')
-
-// const steps = ['Idea', 'Design', 'Build', 'Launch'];
-// const timelineContainer = document.getElementById('timeline-container');
-// const contentBox = document.getElementById('step-content');
-
-// const timeline = createInteractiveTimeline(steps, (index, label) => {
-//   contentBox.textContent = `Currently viewing: ${label}`;
-// });
-
-// timelineContainer.appendChild(timeline);
+document.getElementById('preview-resume-button').addEventListener('click', () => {
+  showModal('JessicaKirbyResume.pdf');
+});
 
 
 

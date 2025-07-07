@@ -1,0 +1,9 @@
+feat: Implement resume modal and enhance UI
+
+- Refactor resume section to use a modal for PDF preview, improving user experience.
+- Standardize resume and download buttons to match the existing button styles.
+- Enhance navigation with animated underlines and new hover effects.
+- Center-align text in contact cards for better visual consistency.
+- Add a "User Stories" step to the project timeline, with a temporary "coming soon" message.
+- Restructure project data to accommodate the new "User Stories" step.
+- Update the StepRenderer to include the new UserStoriesStep component.

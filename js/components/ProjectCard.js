@@ -78,7 +78,7 @@ export function ProjectCard(project) {
     "Svelte": "https://cdn.simpleicons.org/svelte/white",
     "Godot": "https://cdn.simpleicons.org/Godotengine/white",
     "JavaScript": "https://cdn.simpleicons.org/javascript/white",
-    "PhaserJs": "https://cdn.phaser.io/images/logo/phaser-planet-web.png",
+    "PhaserJs": "https://cdn.phaser.io/images/logo/logo-download-vector.png",
     "CreateJs": "https://symbols.getvecta.com/stencil_25/13_createjs.d7de4f0c5d.svg"
   };
 

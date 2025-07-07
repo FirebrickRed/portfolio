@@ -19,6 +19,31 @@
           ],
           "title": "How Often Do You Look Up Gear?"
         }]
+      },{
+        "label": "User Stories",
+        "stories": [
+          "As a visitor, I want to create a wizard (choose school & level) the first time I arrive, so that all gear suggestions are relevant.",
+          "As a visitor, I want my current wizard saved to local storage automatically, so I don’t need an account to keep browsing later.",
+          "As a visitor, I want to create, store, and switch between multiple wizards in the browser, so that I can plan gear for several characters without signing up.",
+          "As a visitor, I want a persistent drawer where I can view or edit my wizard and equip gear, so that I can tweak my build without leaving the gear list.",
+          "As a visitor, I want search and quick‑filter controls that respond in under 200 ms, so that I can zero‑in on the exact gear I need.",
+          "As a visitor, I want to filter the gear grid to show only items compatible with my current wizard, so that I’m not distracted by unusable options.",
+          "As a user, I want each gear card to show where and how to obtain the item (boss drop, pack, craft, vendor, etc.), so that I can plan to acquire it.",
+          "As a user, I want a gear‑set calculator that totals my wizard’s current stats and lets me compare two loadouts side‑by‑side, so that I can see which set is best.",
+          "As a user, I want each gear card to display a quick delta versus what my wizard is wearing, so that upgrades jump out immediately.",
+          "As a user, I want to save a loadout with a custom name and description, so that I can remember why I built it and what it’s for.",
+          "As a user, I want to export or share a saved loadout via a link or file, so that friends (or my future self) can import it instantly.",
+          "As a logged‑in user, I want my wizards and settings to sync to my account, so that I can access them on any device.",
+          "As a visitor, I want a gentle prompt to create an account only when cross‑device sync would help me, so that I understand the benefit of logging in without feeling forced.",
+          "As a visitor, I want a Clear Data button that wipes all locally stored wizards and preferences, so that I can safely use the site on a shared computer.",
+          "As a user, I want gear‑slot buttons that expand to reveal details, so that the layout stays clean but info is one click away.",
+          "As a user, I want the site’s secondary color to switch to my wizard’s school color, so that the interface feels personalized.",
+          "As a user, I want a dark/light theme toggle, so that I can browse comfortably in any lighting.",
+          "As a user, I want the site to be desktop‑first but fully responsive on mobile, so that I get a smooth experience on the main platform players prefer while still supporting phones and tablets.",
+          "As a user, I want a separate Community Builds page so that I can explore and share loadouts without cluttering my own gear management.",
+          "As a user, I want to copy or import a community build into my own wizards, so that I can try it out quickly.",
+          "As a user, I want to rate or comment on community builds so that quality loadouts surface over time."
+        ]
       }, {
         "label": "Wireframe",
         "description": "Before writing a line of code, I started with a solid foundation: gathering user feedback and building wireframes to define functionality and layout. Using a Google Form, I collected input from potential users to identify their needs, which I then translated into user stories. These stories are showcased in a carousel to highlight the range of player goals the tool is designed to support.<br /><br />A key feature that emerged early was the use of a persistent drawer for managing wizards—allowing users to view what’s currently equipped, make quick comparisons, and easily switch between saved wizards. The wireframes also explored how gear cards should display stats and how filters could update results in real time.<br /><br />Although I kept the wireframes low-fidelity to iterate quickly, I was intentional about including real text and layout constraints to ensure everything would scale correctly, especially considering the large volume of stats and gear information in Wizard101. I also planned for responsiveness across desktop, tablet, and mobile to ensure a smooth experience on all devices.",
