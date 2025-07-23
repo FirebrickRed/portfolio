@@ -19,55 +19,6 @@ export function ProjectCard(project) {
 
   titleRow.appendChild(title);
 
-  //#region chart stuff
-  const gearLookupChart = document.createElement('canvas');
-
-  // fetchFormResponses().then(feedbacks => {
-  //   console.log('feedback: ', feedbacks);
-
-  //   const gearLookupData = feedbacks.reduce((acc, current) => {
-  //     const answer = current["How Often do you look up gear while playing Wizard101"];
-  //     acc[answer] = (acc[answer] || 0) + 1;
-  //     return acc;
-  //   }, {});
-
-  //   console.log('gearlookupdata: ', gearLookupData);
-
-  //   new Chart(gearLookupChart, {
-  //     type: 'bar',
-  //     data: {
-  //       labels: ['1 - Never', '2 - Rarely', '3 - Sometimes', '4 - Frequently', '5 - Very Frequently'],
-  //       datasets: [{
-  //         label: 'erm?',
-  //         data: [gearLookupData[1] || 0, gearLookupData[2] || 0, gearLookupData[3] || 0, gearLookupData[4] || 0, gearLookupData[5] || 0],
-  //         borderWidth: 1,
-  //         backgroundColor: '#efb6d4'
-  //       }]
-  //     }
-  //   })
-
-    
-
-  //   // information to display:
-  //   // How Often do you look up gear while playing wizard101
-  //   // Would you create an account to save, share, and/or organize your loadouts
-  //   // How useful would a tool like this be to you
-
-  //   // const container = document.createElement("div");
-  //   // container.className = "space-y-4 mt-6";
-
-  //   // feedbacks.forEach(fb => {
-  //   //   const p = document.createElement("p");
-  //   //   p.className = "text-sm italic text-gray-300 bg-gray-700 p-2 rounded";
-  //   //   p.textContent = fb["What did you like?"] || "No comment.";
-  //   //   container.appendChild(p);
-  //   // });
-
-  //   // document.body.appendChild(container); // Or insert in your card
-  // });
-
-  //#endregion
-
   const techIcons = {
     "Java": "https://img.icons8.com/?size=&id=13679&format=png&color=000000",
     "Gradle": "https://cdn.simpleicons.org/gradle/white",
@@ -133,7 +84,7 @@ export function ProjectCard(project) {
   stepDetail.className = "relative overflow-hidden step-detail";
 
   const stepHeading = document.createElement('h3');
-  stepHeading.className = 'text-3xl font-bold text-kirby my-8 text-center tracking-wide';
+  stepHeading.className = 'text-3xl font-bold text-kirby text-center tracking-wide';
   stepDetail.appendChild(stepHeading);
   const stepLabels = project.steps.map(s => s.label || '');
 
@@ -151,16 +102,20 @@ export function ProjectCard(project) {
 
   allStepElements[0].classList.add("is-active");
   stepHeading.textContent = project.steps[0].label;
-  // Set initial max-height after content is active and rendered
-  setTimeout(() => {
-    const headingStyle = window.getComputedStyle(stepHeading);
-    const headingMargin = parseInt(headingStyle.marginTop) + parseInt(headingStyle.marginBottom);
-    const headingHeight = stepHeading.offsetHeight + headingMargin;
 
-    const contentHeight = allStepElements[0].scrollHeight;
-    
-    stepDetail.style.maxHeight = `${headingHeight + contentHeight}px`;
-  }, 100);
+  const recalculateHeight = () => {
+    const activeStep = allStepElements.find(el => el.classList.contains("is-active"));
+    if (activeStep) {
+      const headingStyle = window.getComputedStyle(stepHeading);
+      const headingMargin = parseInt(headingStyle.marginTop) + parseInt(headingStyle.marginBottom);
+      const headingHeight = stepHeading.offsetHeight + headingMargin;
+      const contentHeight = activeStep.scrollHeight;
+      stepDetail.style.maxHeight = `${headingHeight + contentHeight}px`;
+    }
+  };
+
+  // Set initial max-height after content is active and rendered
+  setTimeout(recalculateHeight, 100);
 
   const timeline = createInteractiveTimeline(stepLabels, index => {
     const currentActiveStep = allStepElements.find(el => el.classList.contains("is-active"));
@@ -173,15 +128,11 @@ export function ProjectCard(project) {
     newActiveStep.classList.add("is-active");
     stepHeading.textContent = project.steps[index].label;
 
-    setTimeout(() => {
-      const headingStyle = window.getComputedStyle(stepHeading);
-      const headingMargin = parseInt(headingStyle.marginTop) + parseInt(headingStyle.marginBottom);
-      const headingHeight = stepHeading.offsetHeight + headingMargin;
+    setTimeout(recalculateHeight, 50);
+  });
 
-      const contentHeight = newActiveStep.scrollHeight;
-      
-      stepDetail.style.maxHeight = `${headingHeight + contentHeight}px`;
-    }, 50);
+  stepDetail.addEventListener('chartRendered', () => {
+    setTimeout(recalculateHeight, 50);
   });
 
   // Create timeline from steps

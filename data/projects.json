@@ -5,20 +5,7 @@
     "steps": [
       {
         "label": "Overview",
-        "description": "Wizard Outfitter is a web app designed to help Wizard101 players easily plan gear and compare loadouts tailored to their wizard’s school and level. It provides fast, intuitive filtering of gear stats across schools, supports saving multiple wizards, and lets players quickly toggle between builds. By reducing the need to reference outdated or scattered tools, Wizard Outfitter streamlines the gear planning process for both new and experienced players.<br /><br />The idea for the project began in 2018, when I built a prototype that went on to win Best Non-Gaming Project at a Neumont College of Computer Science event. That early version validated the concept — and in the current rebuild, I’m applying full-stack development practices to bring the idea to life using modern technologies and UI principles.<br /><br />The project is being built using React, Tailwind CSS, and local storage to handle wizard profiles and UI state. Eventually, the app will expand to include features like:<ul><li>User accounts and persistent cloud-saved wizards</li><li>Community builds for sharing and exploring other players’ loadouts</li><li>Card and deck integration for full spell strategy planning</li></ul></ul><br />To power the app with real data, I wrote a Python web scraper that extracts gear and card information from third-party sources. The scraper formats the data into clean CSV files, which can be easily imported into various databases for long-term flexibility and scalability.<br /><br />Wizard Outfitter is being built with accessibility, performance, and usability in mind. Based on user feedback, the project is also planned to evolve into a companion mobile app, offering native access to gear and card planning across devices. Overall, the project is a passion-driven, long-term build that showcases my full-stack development skills — from scripting and data engineering to UI/UX and product design.",
-        "graphs": [{
-          "key": "gearLookup",
-          "type": "bar",
-          "question": "How Often do you look up gear while playing Wizard101",
-          "labels": [
-            "1 - Never",
-            "2 - Rarely",
-            "3 - Sometimes",
-            "4 - Frequently",
-            "5 - Very Frequently"
-          ],
-          "title": "How Often Do You Look Up Gear?"
-        }]
+        "description": "Wizard Outfitter is a web app designed to help Wizard101 players easily plan gear and compare loadouts tailored to their wizard’s school and level. It provides fast, intuitive filtering of gear stats across schools, supports saving multiple wizards, and lets players quickly toggle between builds. By reducing the need to reference outdated or scattered tools, Wizard Outfitter streamlines the gear planning process for both new and experienced players.<br /><br />The idea for the project began in 2018, when I built a prototype that went on to win Best Non-Gaming Project at a Neumont College of Computer Science event. That early version validated the concept — and in the current rebuild, I’m applying full-stack development practices to bring the idea to life using modern technologies and UI principles.<br /><br />The project is being built using React, Tailwind CSS, and local storage to handle wizard profiles and UI state. Eventually, the app will expand to include features like:<ul><li>User accounts and persistent cloud-saved wizards</li><li>Community builds for sharing and exploring other players’ loadouts</li><li>Card and deck integration for full spell strategy planning</li></ul></ul><br />To power the app with real data, I wrote a Python web scraper that extracts gear and card information from third-party sources. The scraper formats the data into clean CSV files, which can be easily imported into various databases for long-term flexibility and scalability.<br /><br />Wizard Outfitter is being built with accessibility, performance, and usability in mind. Based on user feedback, the project is also planned to evolve into a companion mobile app, offering native access to gear and card planning across devices. Overall, the project is a passion-driven, long-term build that showcases my full-stack development skills — from scripting and data engineering to UI/UX and product design."
       },{
         "label": "User Stories",
         "stories": [
@@ -43,7 +30,59 @@
           "As a user, I want a separate Community Builds page so that I can explore and share loadouts without cluttering my own gear management.",
           "As a user, I want to copy or import a community build into my own wizards, so that I can try it out quickly.",
           "As a user, I want to rate or comment on community builds so that quality loadouts surface over time."
-        ]
+        ],
+        "graphs": [{
+          "key": "gearLookup",
+          "type": "bar",
+          "question": "How Often do you look up gear while playing Wizard101",
+          "labels": [
+            "1 - Never",
+            "2 - Rarely",
+            "3 - Sometimes",
+            "4 - Frequently",
+            "5 - Very Frequently"
+          ],
+          "dataKeys": [1, 2, 3, 4, 5],
+          "title": "How Often Do You Look Up Gear?"
+        }, {
+          "key": "gearLookup",
+          "type": "bar",
+          "question": "How interested are you in rating or reviewing other user's loadouts?",
+          "labels": [
+            "1 - Not Interested",
+            "2 - Slightly Interested",
+            "3 - Maybe",
+            "4 - Somewhat Interested",
+            "5 - Very Interested"
+          ],
+          "dataKeys": [1, 2, 3, 4, 5],
+          "title": "How interested are you in rating or reviewing other user's loadouts?"
+        }, {
+          "key": "gearLookup",
+          "type": "bar",
+          "question": "What's your preferred method of using a Wizard101 outfitter tool?",
+          "labels": [
+            "Desktop Website",
+            "Mobile website",
+            "Mobile App",
+            "In-game Overlay"
+          ],
+          "dataKeys": ["Desktop Website", "Mobile website", "Mobile App", "In-game overlay"],
+          "title": "What's your preferred method of using a Wizard101 outfitter tool?",
+          "multipleChoice": true
+        }, {
+          "key": "gearLookup",
+          "type": "pie",
+          "question": "Would you create an account to save, share, and/or organize your loadouts?",
+          "labels": [
+            "Yes",
+            "No",
+            "Maybe"
+          ],
+          "dataKeys": ["Yes", "No", "Maybe"],
+          "title": "Account Creation Interest",
+          "colors": ["#d74894", "#efb6d4", "#a93778"]
+        }]
       }, {
         "label": "Wireframe",
         "description": "Before writing a line of code, I started with a solid foundation: gathering user feedback and building wireframes to define functionality and layout. Using a Google Form, I collected input from potential users to identify their needs, which I then translated into user stories. These stories are showcased in a carousel to highlight the range of player goals the tool is designed to support.<br /><br />A key feature that emerged early was the use of a persistent drawer for managing wizards—allowing users to view what’s currently equipped, make quick comparisons, and easily switch between saved wizards. The wireframes also explored how gear cards should display stats and how filters could update results in real time.<br /><br />Although I kept the wireframes low-fidelity to iterate quickly, I was intentional about including real text and layout constraints to ensure everything would scale correctly, especially considering the large volume of stats and gear information in Wizard101. I also planned for responsiveness across desktop, tablet, and mobile to ensure a smooth experience on all devices.",
@@ -51,9 +90,7 @@
         "viewInFigmaLink": "https://embed.figma.com/design/HXMQS0Au4lOrGvApiUvA2Y/Wizard-Outfitter-WireFrame?node-id=0-1&embed-host=share",
         "userfeedback": ""
       }
-    ],
-    "description": "Custom Minecraft mod integrating Dungeons & Dragons mechanics including health, armor class, initiative, and character sheets.",
-    "url": "https://github.com/FirebrickRed/MinecraftDnD"
+    ]
   }, {
     "title": "SubOptimalGaming",
     "tech": ["GitHub", "Svelte", "Netlify"],
