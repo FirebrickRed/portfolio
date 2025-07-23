@@ -11,7 +11,6 @@ export function createInteractiveTimeline(steps, onSelect) {
   svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
   svg.setAttribute("width", totalWidth);
   svg.setAttribute("height", 80);
-  // svg.classList.add("w-auto", "h-auto");
 
   // Line
   const line = document.createElementNS(svgNS, "line");
@@ -118,8 +117,6 @@ export function createInteractiveTimeline(steps, onSelect) {
         dot.setAttribute("fill", i === index ? "transparent" : "white");
         dot.setAttribute("stroke", i === index ? "transparent" : "#d74894");
       }, 50);
-      // node.setAttribute("fill", i === index ? "#efb6d4" : "white");
-      // node.setAttribute("stroke", i === index ? "#efb6d4" : "#d74894");
       dot.setAttribute("r", i === index ? radius + 2 : radius);
 
       label.setAttribute("font-size", i === index ? "18" : "16");

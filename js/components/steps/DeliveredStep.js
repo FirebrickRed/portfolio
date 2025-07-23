@@ -21,7 +21,10 @@ export function renderDeliveredStep(step) {
     previewButton.textContent = 'Preview Site';
     previewButton.className = 'action-button preview-button';
     previewButton.addEventListener('click', () => {
-      showModal(livesite);
+      const iframe = document.createElement('iframe');
+      iframe.src = livesite;
+      iframe.style.height = '100%';
+      showModal(iframe);
     });
     actionsContainer.appendChild(previewButton);
   }

@@ -298,6 +298,19 @@ body {
   border-radius: 20px;
   width: 90%;
   height: 90%;
+  overflow: auto; /* Add scrollbars if content overflows */
+  display: flex;
+  flex-direction: column;
+  border: 3px solid var(--kirby);
+}
+
+html.dark .modal-content {
+  background: #1f2937; /* Tailwind gray-800 for dark mode */
+}
+
+.modal-iframe-content {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }

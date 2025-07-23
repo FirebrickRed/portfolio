@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/FirebrickRed/portfolio#readme",
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.16"
+    "@tailwindcss/typography": "^0.5.16",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^7.0.5"
   }
 }

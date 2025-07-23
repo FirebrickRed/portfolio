@@ -1,10 +1,5 @@
 import { createInteractiveTimeline } from "./InteractiveTimeline.js";
 import { renderStep } from "./StepRenderer.js";
-// import { fetchFormResponses } from "../utils/fetchFeedback.js";
-
-// const stepRenderers = {
-//   overview: renderOverviewStep,
-// }
 
 export function ProjectCard(project) {
   const card = document.createElement('div');
@@ -35,7 +30,6 @@ export function ProjectCard(project) {
 
   const techListContainer = document.createElement('ul');
   techListContainer.className = 'flex';
-  // techListContainer.innerHTML = ""; // Clear existing icons
 
   project.tech.forEach(tech => {
     const iconUrl = techIcons[tech];
@@ -68,14 +62,11 @@ export function ProjectCard(project) {
     } else {
       const fallback = document.createElement("span");
       fallback.textContent = tech;
-      // fallback.className = "text-sm text-white bg-pink-600 px-2 py-1 rounded";
       techListContainer.appendChild(fallback);
     }
   });
 
   titleRow.appendChild(techListContainer);
-  // const tech = document.createElement('p');
-  // tech.textContent = `Tech: ${project.tech.join(', ')}`;
 
   const timelineContainer = document.createElement('div');
   timelineContainer.className = 'w-3/4';
@@ -135,13 +126,8 @@ export function ProjectCard(project) {
     setTimeout(recalculateHeight, 50);
   });
 
-  // Create timeline from steps
-
   timelineContainer.appendChild(timeline);
 
-  // Assemble full card
-  // card.appendChild(title);
-  // card.appendChild(techListContainer);
   card.appendChild(titleRow);
   card.appendChild(timelineContainer);
   card.appendChild(stepDetail);

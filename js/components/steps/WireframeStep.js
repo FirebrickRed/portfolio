@@ -22,7 +22,10 @@ export function renderWireframeStep(step) {
     figmaButton.textContent = 'Preview Wireframe';
     figmaButton.className = 'action-button preview-button';
     figmaButton.addEventListener('click', () => {
-      showModal(step.previewWireFrameLink);
+      const iframe = document.createElement('iframe');
+      iframe.src = step.previewWireFrameLink;
+      iframe.style.height = '100%';
+      showModal(iframe);
     });
     actionsContainer.appendChild(figmaButton);
   }
